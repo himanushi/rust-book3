@@ -1,10 +1,13 @@
 use std::thread;
 
 fn main() {
-    thread::spawn(f);
-    thread::spawn(f);
+    let t1 = thread::spawn(f);
+    let t2 = thread::spawn(f);
 
     println!("Main!!");
+
+    t1.join().unwrap();
+    t2.join().unwrap();
 }
 
 fn f() {
